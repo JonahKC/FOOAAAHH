@@ -1,0 +1,533 @@
+/* ■ ■ Taken from JonahStrap, Version 1.2.2 ■ ■ */
+
+/* ■ ■ Font ■ ■ */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Rampart+One&display=swap');
+
+/* ■ ■ Variables ■ ■ */
+
+:root {
+  --primary: #4b77fa;
+  --secondary: #96e1ff;
+  --background: #4bc8fa;
+  --text: #000000;
+}
+
+/* ■ ■ Tag CSS ■ ■ */
+
+/* Font, margins, background and text color */
+html {
+  font-family: 'Lato', sans-serif;
+  margin-left: 25px;
+  margin-right: 25px;
+  background-color: var(--background);
+  color: var(--text);
+	background-image: url("./pictures/background.png");
+  background-repeat: repeat-y;
+  background-attachment: fixed;
+  background-position: top;
+}
+/* Underlines and makes links the same color as normal text */
+a {
+  text-decoration: underline;
+  color: var(--text);
+}
+/* Makes images undraggable and unselectable */
+img {
+  user-drag: none; 
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+/* Adds wider margins, centers and shrinks text */
+footer {
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-bottom: 10px;
+  margin-top: 30px;
+  text-align: center;
+  font-size: .75rem;
+}
+/* Colors buttons and gives them padding and margins */
+button {
+  background-color: rgba(150, 225, 255, 0.5);
+  border: 3px solid var(--primary);
+  color: var(--text);
+  border-radius: 4px;
+  text-decoration: none;
+  margin: 4px 2px;
+	font-family: 'Rampart One', cursive;
+	font-size: 3rem;
+}
+.button:hover {
+  background-color: var(--primary);
+  transition: .5s;
+}
+table, th, td {
+  border: 3px solid var(--primary);
+  border-collapse: collapse;
+  border-radius: 5px !important;
+  background-color: var(--secondary);
+}
+/* ■ ■ Forms ■ ■ */
+
+/* Text input */
+input[type=text] {
+  border: 3px solid var(--primary);
+  border-radius: 4px;
+	font-family: 'Rampart One', cursive;
+	font-size: 1.25rem;
+	color: black;
+  background-color: rgba(150, 225, 255, 0.7);
+}
+input::placeholder{
+  color: black;
+}
+/* Email input */
+input[type=email] {
+  border: 3px solid var(--primary);
+  border-radius: 4px;
+}
+/* Submit button inputs */
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: rgba(150, 225, 255, 0.7);
+  border: 3px solid var(--primary);
+  color: var(--text);
+  border-radius: 4px;
+	outline: none;
+  text-decoration: none;
+	font-family: 'Rampart One', cursive;
+	font-size: 3rem;
+}
+input:focus, textarea:focus, select:focus{
+	outline: none;
+}
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+  background-color: var(--primary);
+  transition: .5s;
+	outline: none;
+}
+
+/* ■ ■ Fancy Classes ■ ■ */
+
+/* Centers content */
+.center {
+  text-align: center;
+}
+/* Vertically and horizontally centers content, flexing left to right */
+.vertcenter-side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Vertically and horizontally centers content, flexing top to bottom */
+.vertcenter-up {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+/* Centers content with margins */
+.margin-centered{
+  margin-left: auto; margin-right: auto;
+}
+/* Makes clear hr element */
+.space {
+  background-color: transparent;
+  border-color: transparent;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 1rem;
+}
+/* Makes clear hr element that disappears on mobile */
+.phonespace {
+  background-color: transparent;
+  border-color: transparent;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 1rem;
+}
+/* Makes a fancy hr element line 100% of the screen width */
+.largeline {
+  background-color: var(--primary);
+  border-color: transparent;
+  border-radius: 4px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 2px;
+}
+/* Makes a fancy hr element line 75% of the screen width */
+.midline {
+  background-color: var(--primary);
+  border-color: transparent;
+  border-radius: 4px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;
+  height: 2px;
+}
+/* Makes a fancy hr element line 75% of the screen width */
+.smallline {
+  background-color: var(--primary);
+  border-color: transparent;
+  border-radius: 4px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 33%;
+  height: 2px;
+}
+/* Makes text 3x size */
+.title {
+  text-decoration: none;
+  font-size: 4rem;
+	font-family: 'Rampart One', cursive;
+}
+/* Makes text 2x size */
+.subtitle {
+  text-decoration: none;
+  font-size: 2rem;
+	font-family: 'Rampart One', cursive;
+}
+/* Gives content an accented background color and some padding, and centers everything inside */
+.highlight {
+  background-color: rgba(150, 225, 255, 0.7);
+	border: 3px solid var(--primary);
+	border-radius: 4px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+}
+/* Puts content in a nice little rounded box with a black border */
+.box {
+  word-break: break-all;
+  display: inline-block;
+  width: 50%;
+  text-align: left;
+  border: #000000 2px solid;
+  border-radius: 5px;
+  padding: 2%;
+}
+/* Removes all text decoration */
+.nodeco {
+  text-decoration: none !important;
+  list-style: none;
+}
+/* Makes text align right */
+.right {
+  text-align: right;
+	margin-right: 20px;
+}
+/* Makes your content responsively 100% wide */
+.resp-100 {
+  width: 100%;
+}
+/* Makes your content responsively 50% wide */
+.resp-50 {
+  width: 50%;
+}
+/* Makes your content responsively 33% wide */
+.resp-33 {
+  width: 33%;
+}
+/* Makes parallax image behind your content */
+.parallax-div {
+  width: 100%;
+  min-height: 110vh !important;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make text fade in after 2 seconds */
+.fade-in-2 {
+  display: inline-block;
+  animation: fadeIn linear 2s;
+  -webkit-animation: fadeIn linear 2s;
+  -moz-animation: fadeIn linear 2s;
+  -o-animation: fadeIn linear 2s;
+  -ms-animation: fadeIn linear 2s;
+}
+/* Makes text fade in after 4 seconds */
+.fade-in-4 {
+  display: inline-block;
+  animation: fadeIn linear 4s;
+  -webkit-animation: fadeIn linear 4s;
+  -moz-animation: fadeIn linear 4s;
+  -o-animation: fadeIn linear 4s;
+  -ms-animation: fadeIn linear 4s;
+}
+/* Technical fade-y stuff */
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+@-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+@-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+@-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+/* CSS for the text the tooltip goes on */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted var(--text);
+  padding: 0 0 0 0;
+}
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: var(--background);
+  color: var(--text);
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+.tooltip .tooltiptext {
+  width: 120px;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px; /* If you change this, use half of the width (for example, 120/2 = 60), to center the tooltip */
+}
+
+/* ■ ■ CSS That Changes On Mobile ■ ■ */
+
+@media screen and (max-width: 600px) {
+  .cornertitle {
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+  }
+  .phonespace {
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    width: 1%;
+    height: 0rem;
+  }
+  .highlight {
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+  }
+  .box {
+  word-break: break-all;
+  width: 90%;
+  }
+  .image-holder {
+  width: 100%; 
+  min-height: 110vh !important;
+  padding-top: 100px;
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  }
+
+  .parallax-div {
+  background-attachment: initial;
+  width: 100%; 
+  min-height: 110vh !important;
+  padding-top: 100px;
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  }
+	.right {
+  text-align: center;
+	margin: 0 0 0 0;
+  }
+}
+
+/* ■ ■ Title Bar ■ ■ */
+
+/* .toptitle and .topbutton go inside .topbar */
+
+/* Clears floats after .topbar */
+.topbar:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* Puts your title in the top left corner */
+.toptitle {
+  float: left;
+  width: 50%;
+}
+/* Puts content opposite to your title */
+.topbutton {
+  float: right;
+  text-align: right;
+  text-decoration: none;
+  width: 50%;
+  padding-top: 10px;
+}
+
+/* Here's the CSS for a dropdown menu */
+
+/* Apply to the main button you hover over */
+.dropbtn {
+  background-color: var(--secondary);
+  color: var(--text);
+  padding: 16px;
+  font-size: 16px;
+  border: 3px solid var(--primary);
+  border-radius: 4px;
+}
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  color: var(--text);
+}
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--secondary);
+  border: 3px solid var(--primary);
+  color: var(--text);
+  border-radius: 4px;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+/* Styles links inside the dropdown */
+.dropdown-content a {
+  color: var(--text);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+/* Changes color of dropdown links on hover */
+.dropdown-content a:hover {background-color: var(--primary);}
+/* Shows the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+/* Changse the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: var(--primary);}
+
+/* ■ ■ Responsive Title Bar ■ ■ */
+
+@media screen and (max-width: 600px) {
+  .toptitle {
+    width: 100%;
+    text-align: center;
+  }
+  .topbutton {
+    width: 100%;
+    text-align: center;
+    margin-top: -10px;
+  }
+}
+
+/* ■ ■ Columns ■ ■ */
+
+/* All .column-# go inside .row */
+
+/* Clears floats after .topbar */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* Two columns */
+.column-2 {
+  float: left;
+  width: 50%;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+/* Three columns */
+.column-3{
+  float: left;
+  width: 32%;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+/* Four columns */
+.column-4{
+  float: left;
+  width: 25%;
+  text-align: center;
+  padding-top: 45px;
+  padding-bottom: 45px;
+}
+/* Special 2 Columns */
+.column-x {
+  float: left;
+  width: 49%;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.column-y {
+  float: left;
+  width: 2%;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+/*  ■ ■ Responsive Columns ■ ■ */
+@media screen and (max-width: 600px) {
+  .row {
+    display: block !important;
+  }
+  .column-2 {
+    width: 100%;
+    padding: 0px 0;
+    display: block !important;
+    height: auto;
+  }
+  .column-3 {
+    width: 100%;
+    padding: 0px 0;
+    display: block !important;
+    height: auto;
+  }
+  .column-4 {
+    width: 100%;
+    padding: 0px 0;
+    display: block !important;
+    height: auto;
+  }
+  .column-x {
+    width: 100%;
+    padding: 0px 0;
+    display: block !important;
+    height: auto;
+  }
+  .column-y {
+    width: 100%;
+    padding: 0px 0;
+    display: block !important;
+    height: 20px;
+  }
+}
