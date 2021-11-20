@@ -22,9 +22,27 @@ html {
   background-color: var(--background);
   color: var(--text);
 	background-image: url("./pictures/background.png");
-  background-repeat: repeat-y;
+  background-repeat: repeat;
   background-attachment: fixed;
   background-position: top;
+}
+
+/* Make fullscreen canvas */
+#gameedgesfancy {
+	overflow: hidden;
+}
+
+.game {
+  font-family: 'Lato', sans-serif;
+  margin: -10px -10px -10px -10px !important;
+  padding: -10px -10px -10px -10px !important;	
+  background-color: var(--background);
+  color: var(--text);
+	background-image: url("./pictures/background.png");
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-position: top;
+	overflow: hidden;
 }
 /* Underlines and makes links the same color as normal text */
 a {
@@ -58,11 +76,16 @@ button {
   text-decoration: none;
   margin: 4px 2px;
 	font-family: 'Rampart One', cursive;
-	font-size: 3rem;
+	font-size: 2rem;
+	outline: none;
 }
-.button:hover {
+button:hover {
   background-color: var(--primary);
   transition: .5s;
+	outline: none;
+}
+button:focus{
+	outline: none;
 }
 table, th, td {
   border: 3px solid var(--primary);
@@ -190,6 +213,9 @@ input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
 .subtitle {
   text-decoration: none;
   font-size: 2rem;
+	font-family: 'Rampart One', cursive;
+}
+.coolfont {
 	font-family: 'Rampart One', cursive;
 }
 /* Gives content an accented background color and some padding, and centers everything inside */
@@ -530,4 +556,45 @@ input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
     display: block !important;
     height: 20px;
   }
+}
+
+.showwhengameover {
+  display: none;
+}
+
+/* FANCY POPUP */
+
+#mobilewarning{
+	display: none;
+	background-color: rgba(150, 225, 255, 0.9);
+	border: 3px solid var(--primary);
+	border-radius: 4px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+}
+@media screen and (max-width: 600px) {
+	#mobilewarning{
+	display: flex !important;
+  width: 80%;
+  height: 80%;
+  position: fixed; 
+  top: calc(50% - 40%); // half of width
+  left: calc(50% - 40%); // half of height
+  bottom: calc(50% - 40%); // half of width
+  right: calc(50% - 40%); // half of height
+	}
+}
+.showwhengameover {
+  font-family: 'Lato', sans-serif;
+  margin-left: 25px;
+  margin-right: 25px;
+  background-color: var(--background);
+  color: var(--text);
+	background-image: url("./pictures/background.png");
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-position: top;
 }
