@@ -95,7 +95,8 @@ class Random {
   * Selects a random element from an array, similar to Python's random.choice().
   4*/
   static choice(array) {
-    return array[Math.floor(Math.random()*array.length)];
+    let index = Math.floor(Math.random()*array.length);
+    return {'object': array[index], 'index': index};
   }
 }
 
@@ -119,7 +120,7 @@ function resetScene() {
   obstacles_sprites = [];
 
   game_over = false;
-  global_sprite_scale = windowWidth * 0.9 / 10000;
+  global_sprite_scale = windowWidth*(0.3/10000)+0.06;
   obstacle_speed = STARTING_OBSTACLE_SPEED;
   score = 0;
   clamped_millis = 0;
@@ -129,14 +130,14 @@ function resetScene() {
   // Draw the background images (clouds, etc.)
   for(let i = 0; i < BACKGROUND_IMAGES_ON_SCREEN; i++) {
     background_sprites.push(createSprite(Random.range(0, windowWidth), windowHeight + Random.range(0, windowHeight - 1)));
-    background_sprites[i].addImage(background_images[i % background_images.length]);
+    background_sprites[i].addImage(Random.choice(background_images).object);
     background_sprites[i].scale = Random.range(global_sprite_scale, BACKGROUND_IMAGES_SIZE_VARIATION);
   }
 
   // Draw the honey images
   for(let i = 0; i < HONEY_ON_SCREEN; i++) {
     honey_sprites.push(createSprite(Random.range(0, windowWidth), windowHeight + Random.range(0, windowHeight - 1)));
-    honey_sprites[i].addImage(honey_images[i % honey_images.length]);
+    honey_sprites[i].addImage(Random.choice(honey_images).object);
     honey_sprites[i].scale = global_sprite_scale;
     honey_sprites[i].setCollider('circle', 0, 15, 320);
   }
@@ -146,15 +147,17 @@ function resetScene() {
     obstacles_sprites.push(createSprite(Random.range(0, windowWidth), windowHeight + Random.range(0, windowHeight - 1)));
     // Load an animated one every 3rd obstacle
     if(i % 3 != 0) {
-      obstacles_sprites[i].addImage(obstacles_images[i % obstacles_images.length]); // i % obstacles_images.length is to make sure the the sprite getting drawn is always within the array
-      if(i % obstacles_images.length in STATIC_ROTATION_INDECES && Random.range(0, 1) == 1) {
+      let image = Random.choice(obstacles_images)
+      obstacles_sprites[i].addImage(image.object); // i % obstacles_images.length is to make sure the the sprite getting drawn is always within the array
+      if(image.index in STATIC_ROTATION_INDECES && Random.range(0, 1) == 1) {
         obstacles_sprites[i].mirrorX(-1);
       }
     } else {
-      if(i % obstacles_images.length in ANIMATION_ROTATION_INDECES && Random.range(0, 1) == 1) {
+      let anim = Random.choice(obstacles_animations);
+      if(anim.index in ANIMATION_ROTATION_INDECES && Random.range(0, 1) == 1) {
         obstacles_sprites[i].mirrorX(-1);
       }
-      obstacles_sprites[i].addAnimation("main", obstacles_animations[i % obstacles_images.length]);
+      obstacles_sprites[i].addAnimation("main", anim.object);
       obstacles_sprites[i].changeAnimation("main");
       obstacles_sprites[i].animation.play();
     }
@@ -191,6 +194,26 @@ document.addEventListener('keydown', function(event) {
   }
 });
 
+function addObstacle() {
+  let newIndex = obstacles_sprites.push(createSprite(Random.range(0, windowWidth), windowHeight + Random.range(0, windowHeight - 1))) - 1;
+  if(Random.range(0, 3) != 0) {
+    obstacles_sprites[newIndex].addImage(Random.choice(obstacles_images).object);
+    if(newIndex % obstacles_images.length in STATIC_ROTATION_INDECES) {
+      obstacles_sprites[i].rotation = Random.range(0, 360);
+      obstacles_sprites[i].rotationSpeed = Random.range(-1, 1);
+    }
+  } else {
+    if(newIndex % obstacles_images.length in ANIMATION_ROTATION_INDECES && Random.range(0, 1) == 1) {
+      obstacles_sprites[newIndex].mirrorX(-1);
+    }
+    obstacles_sprites[newIndex].addAnimation("main", Random.choice(obstacles_animations).object);
+    obstacles_sprites[newIndex].changeAnimation("main");
+    obstacles_sprites[newIndex].animation.play();
+  }
+  obstacles_sprites[newIndex].scale = global_sprite_scale;
+  obstacles_sprites[newIndex].setCollider('circle', 0, 0, 20);
+}
+
 // P5.js Functions
 function preload() {
   // Load the Rampart One font
@@ -223,7 +246,7 @@ function setup() {
 }
 
 function draw() {
-  if(cease_game_loop) { // Stop game loop from running when paused, tabbed out, etc.
+  if(cease_game_loop || document.visibilityState != "visible" || document.hidden) { // Stop game loop from running when paused, tabbed out, etc.
     return;
   }
   if(game_over) {
@@ -233,6 +256,7 @@ function draw() {
     score = Math.floor(score); // Round the score to an integer
     if(localStorage.getItem("highscore") == null || score > localStorage.getItem("highscore")) {
       localStorage.setItem("highscore", score);
+
     }
     document.getElementsByClassName('showwhengameover').forEach((item, index) => {
       item.style.setProperty("display", "block");
@@ -299,7 +323,7 @@ function draw() {
     }
 
     // Lower FPS should not result in lower speed, so we multiply be deltaTime to make sure the speed is constant
-    normalizedSpeed = (PLAYER_SPEED * deltaTime) * (windowWidth * 1/2048); // Thank you Mr. Nelson, for dimensional analysis. Scales the player speed based on screen size, and adjusts it so it's the same regardless of latency.
+    normalizedSpeed = (PLAYER_SPEED*deltaTime)*(windowWidth*0.0003)+6; // Thank you Mr. Nelson, for dimensional analysis. Scales the player speed based on screen size, and adjusts it so it's the same regardless of latency.
 
     // Move the background images up slower than the obstacles, for parallax effect
     for(let i = 0; i < background_sprites.length; i++) {
@@ -326,26 +350,9 @@ function draw() {
       if(obstacles_sprites[i].position.y < -(obstacles_sprites[i].height + 5)) {
         obstacles_sprites[i].position.y = windowHeight + Random.range(obstacles_sprites[i].height + 1, windowHeight - 1);
         obstacles_sprites[i].position.x = Random.range(0, windowWidth);
-        // 
-        if(score % 10 == 0 && score != 0 && obstacles_sprites.length < MAX_OBSTACLES) {
-          let newIndex = obstacles_sprites.push(createSprite(Random.range(0, windowWidth), windowHeight + Random.range(0, windowHeight - 1))) - 1;
-          if(Random.range(0, 3) != 0) {
-            obstacles_sprites[newIndex].addImage(obstacles_images[Random.range(0, obstacles_images.length - 1)]);
-            if(newIndex % obstacles_images.length in STATIC_ROTATION_INDECES) {
-              obstacles_sprites[i].rotation = Random.range(0, 360);
-              obstacles_sprites[i].rotationSpeed = Random.range(-1, 1);
-            }
-          } else {
-            if(newIndex % obstacles_images.length in ANIMATION_ROTATION_INDECES && Random.range(0, 1) == 1) {
-              obstacles_sprites[newIndex].mirrorX(-1);
-            }
-            obstacles_sprites[newIndex].addAnimation("main", obstacles_animations[Random.range(0, obstacles_animations.length - 1)]);
-            obstacles_sprites[newIndex].changeAnimation("main");
-            obstacles_sprites[newIndex].animation.play();
-          }
-          obstacles_sprites[newIndex].scale = global_sprite_scale;
-          obstacles_sprites[newIndex].setCollider('circle', 0, 0, 20);
-        }
+        //if(Math.floor(score) % 10 == 0 && score != 0 && obstacles_sprites.length < MAX_OBSTACLES) {
+        //  addObstacle();
+        //}
       }
     }
 
@@ -364,6 +371,7 @@ function draw() {
         // Slow the game down
         obstacle_speed *= HONEY_SLOW_AMOUNT;
         score += 5;
+        addObstacle();
       }
     }
 

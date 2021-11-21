@@ -581,10 +581,10 @@ input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
   width: 80%;
   height: 80%;
   position: fixed; 
-  top: calc(50% - 40%); // half of width
-  left: calc(50% - 40%); // half of height
-  bottom: calc(50% - 40%); // half of width
-  right: calc(50% - 40%); // half of height
+  top: calc(50% - 40%);
+  left: calc(50% - 40%);
+  bottom: calc(50% - 40%);
+  right: calc(50% - 40%);
 	}
 }
 .showwhengameover {

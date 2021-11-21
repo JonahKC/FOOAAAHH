@@ -22,7 +22,7 @@
     <meta property="twitter:title" content="FOOAAAHH!"> <!-- Page Title -->
     <meta property="twitter:description" content="You're flying your airplane carrying a huge load of honey, when suddenly your plane explodes! You're falling and need to slow down—if you go too fast, you'll pass out. Use your left and right arrow keys to avoid birds and airplane parts while trying to hit flying globs of honey to slow down."> <!-- Page Description -->
     <meta property="twitter:image" content="https://fooaaahh.jcwyt.com/pictures/embed.png"> <!-- Social Media Embed (ideally 16x9 ratio, and must be link) -->
-	</head>
+  </head>
   <body>
   	<!--<div class="highlight vertcenter-up" id="mobilewarning"><h1 class="subtitle">It looks like you're on a mobile device!</h1><br><p>Unfortunately, FOOAAAHH isn't mobile compatible. Try playing on a computer! If you're on a computer and getting this message, resize your browser.</p></div>-->
   	<hr class="space">
@@ -31,10 +31,10 @@
   	<hr class="space">
   	<hr class="smallline">
   	<hr class="space">
-  	<form class="center" action="./game.html">
-  			<input type="submit" value="Play!" style="width: 25%; min-width: 200px; font-size: 3rem;">
-        <br><br>        
-        <input type="text" placeholder="Name" required="required" style="width: 25%; min-width: 200px;">
+  	<form onsubmit="localStorage.setItem('username', document.getElementById('username').value)" class="center" action="./game.html">
+			<input type="submit" value="Play!" style="width: 25%; min-width: 200px; font-size: 3rem;">
+			<br><br>
+			<input type="text" id="username" placeholder="Name" required="required" style="width: 25%; min-width: 200px;">
   	</form>
   	<hr class="space">
   	<hr class="smallline">
@@ -42,18 +42,7 @@
   		<div class="column-x center">
   			<div class="highlight" style="height: auto; min-height: 380px;">
   				<h2 class="subtitle">Leaderboard</h2>
-  				<p>
-            1 - Jonah - 99999<br>
-  				  2 - Jonah - 99998<br>
-  				  3 - Jonah - 99997<br>
-  				  4 - Jonah - 99996<br>
-  				  5 - Jonah - 99995<br>
-  				  6 - Jonah - 99994<br>
-  				  7 - Jonah - 99993<br>
-  				  8 - Jonah - 99992<br>
-  				  9 - Jonah - 99991<br>
-  				  10 - Callum - 5
-          </p>
+  				<p id="leaderboard" onload="updateLeaderboard()"></p>
   			</div>
   		</div>
   		<div class="column-y">

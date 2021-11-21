@@ -22,18 +22,16 @@
     <meta property="twitter:title" content="Play - FOOAAAHH!"> <!-- Page Title -->
     <meta property="twitter:description" content="You're flying your airplane carrying a huge load of honey, when suddenly your plane explodes! You're falling and need to slow down—if you go too fast, you'll pass out. Use your left and right arrow keys to avoid birds and airplane parts while trying to hit flying globs of honey to slow down."> <!-- Page Description -->
     <meta property="twitter:image" content="https://fooaaahh.jcwyt.com/pictures/embed.png"> <!-- Social Media Embed (ideally 16x9 ratio, and must be link) -->
-		
-		<!--
-		set this up so if you havent given a name it brings you to homepage
-		<script type="text/javascript">
-		  if(CHANGE THIS) {
-		  document.location = "";
-		  }
+	<script type="text/javascript">
+	  if(localStorage.getItem("username") == null) {
+	    window.location.replace("/");
+	  }
     </script>
-		-->
-		<script src="/p5/p5.min.js"></script>
-		<script src="/p5/p5.play.js"></script>
-    	<script src="/p5/p5.clickable.js"></script>
+		<script src="/lib/p5.min.js"></script>
+		<script src="/lib/p5.play.js"></script>
+    <script src="/lib/p5.clickable.js"></script>
+    <script src="/lib/ajax.min.js"></script>
+    <script src="/lib/lootlocker.js"></script>
 		<script src="script.js"></script>
 	</head>
 	<body>
@@ -58,18 +56,7 @@
 			<div class="column-x">
 				<div class="highlight" style="height: auto; min-height: 380px;">
 					<h2 class="subtitle">Leaderboard</h2>
-					<p>
-            1 - Jonah - 99999<br>
-					  2 - Jonah - 99998<br>
-					  3 - Jonah - 99997<br>
-					  4 - Jonah - 99996<br>
-					  5 - Jonah - 99995<br>
-					  6 - Jonah - 99994<br>
-					  7 - Jonah - 99993<br>
-					  8 - Jonah - 99992<br>
-					  9 - Jonah - 99991<br>
-					  10 - Callum - 5
-          </p>
+					<p id="leaderboard" onload="updateLeaderboard()"></p>
 				</div>
 			</div>
 		</div>
