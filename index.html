@@ -3,7 +3,7 @@
 	<head>
     <title>FOOAAAHH!</title> <!-- Page Title -->
     <link rel="icon" href="/pictures/airplane.png"> <!-- Favicon -->
-    <meta name="description" content="You're flying your airplane carrying a huge load of honey, when suddenly your plane explodes! You're falling and need to slow down—if you go too fast, you'll pass out. Use your left and right arrow keys to avoid birds and airplane parts while trying to hit flying globs of honey to slow down."> <!-- Page Description -->
+    <meta name="description" content="You're flying your airplane carrying a huge load of honey, when suddenly your plane explodes! As you fall, avoid birds and airplane parts while trying to hit flying globs of honey to slow down."> <!-- Page Description -->
     <meta name="keywords" content="fooaaahh, game, unblock, unblocked, stratagy, airplane, video game, honey, cloud, explode, subway surfers"> <!-- Keywords -->
     <meta name="robots" content="index, follow"> <!-- Index Preferences -->
     <link rel="canonical" href="https://fooaaahh.jcwyt.com/"> <!-- Canonical Domain -->
@@ -14,30 +14,35 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fooaaahh.jcwyt.com/"> <!-- Canonical Domain -->
     <meta property="og:title" content="FOOAAAHH!"> <!-- Page Title -->
-    <meta property="og:description" content="You're flying your airplane carrying a huge load of honey, when suddenly your plane explodes! You're falling and need to slow down—if you go too fast, you'll pass out. Use your left and right arrow keys to avoid birds and airplane parts while trying to hit flying globs of honey to slow down."> <!-- Page Description -->
+    <meta property="og:description" content="You're flying your airplane carrying a huge load of honey, when suddenly your plane explodes! As you fall, avoid birds and airplane parts while trying to hit flying globs of honey to slow down."> <!-- Page Description -->
     <meta property="og:image" content="https://fooaaahh.jcwyt.com/pictures/embed.png"> <!-- Social Media Embed (ideally 16x9 ratio, and must be link) -->
     <!-- Special Twitter Embeds -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://fooaaahh.jcwyt.com/"> <!-- Canonical Domain -->
     <meta property="twitter:title" content="FOOAAAHH!"> <!-- Page Title -->
-    <meta property="twitter:description" content="You're flying your airplane carrying a huge load of honey, when suddenly your plane explodes! You're falling and need to slow down—if you go too fast, you'll pass out. Use your left and right arrow keys to avoid birds and airplane parts while trying to hit flying globs of honey to slow down."> <!-- Page Description -->
+    <meta property="twitter:description" content="You're flying your airplane carrying a huge load of honey, when suddenly your plane explodes! As you fall, avoid birds and airplane parts while trying to hit flying globs of honey to slow down."> <!-- Page Description -->
     <meta property="twitter:image" content="https://fooaaahh.jcwyt.com/pictures/embed.png"> <!-- Social Media Embed (ideally 16x9 ratio, and must be link) -->
     <script src="/lib/ajax.min.js"></script>
+    <script src="/lib/censor.js"></script>
     <script src="/lib/lootlocker.js"></script>
   </head>
   <body>
-  	<!--<div class="highlight vertcenter-up" id="mobilewarning"><h1 class="subtitle">It looks like you're on a mobile device!</h1><br><p>Unfortunately, FOOAAAHH isn't mobile compatible. Try playing on a computer! If you're on a computer and getting this message, resize your browser.</p></div>-->
   	<hr class="space">
   	<h1 class="title center" style="line-height:.9rem;">FOOAAAHH!</h1>
   	<h2 class="subtitle center">Falling Out Of An Airplane And Hitting Honey</h2>
   	<hr class="space">
   	<hr class="smallline">
   	<hr class="space">
-  	<form onsubmit="localStorage.setItem('username', document.getElementById('username').value)" class="center" action="./game.html">
+  	<form onsubmit="localStorage.setItem('username', document.getElementById('username').value)" class="center" action="/game">
 			<input type="submit" value="Play!" style="width: 25%; min-width: 200px; font-size: 3rem;">
 			<br><br>
-			<input type="text" id="username" placeholder="Name" required="required" style="width: 25%; min-width: 200px;">
+			<input type="text" id="username" placeholder="Name" maxlength="25" required="required" style="width: 25%; min-width: 200px;">
   	</form>
+    <script>
+      if(localStorage.getItem('username')) {
+        document.getElementById('username').value = localStorage.getItem('username');
+      }
+    </script>
   	<hr class="space">
   	<hr class="smallline">
   	<div class="row">
@@ -52,7 +57,7 @@
   		<div class="column-x">
   			<div class="highlight" style="height: auto; min-height: 380px;">
   				<h2 class="subtitle">How to Play</h2>
-  				<p><br><br>You're flying your airplane carrying a huge load of honey, when suddenly your plane explodes! You're falling and need to slow down—if you go too fast, you'll pass out. <b>Use your left and right arrow keys to avoid birds and airplane parts while trying to hit flying globs of honey to slow down.</b></p>
+  				<p><br><br>You're flying your airplane carrying a huge load of honey, when suddenly your plane explodes! You're falling and need to slow down–if you go to fast, you'll black out. <b>Use your left and right arrow keys to avoid birds and airplane parts while trying to hit flying globs of honey to slow down. On mobile? Use the slider to control the direction of your fall!</b></p>
   			</div>
   		</div>
   	</div>
@@ -60,9 +65,10 @@
   	<hr class="largeline">
   </body>
   <footer>
-  	<img src="/pictures/airplane.png" width="50px">
+  	<a href="/"><img src="/pictures/airplane.png" width="50px"></a>
   	<p class="footertext">
-  		Made by <a href="https://jcwyt.com">JCWYT</a>.<br>
+  		Made by <a target="_blank" href="https://jcwyt.com">JCWYT</a>.<br>
+      View the <a href="https://fooaaahh.jcwyt.com/credits">full credits</a>.
   	</p>
   </footer>
 </html>

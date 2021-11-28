@@ -32,17 +32,34 @@ html {
 	overflow: hidden;
 }
 
+#defaultCanvas0 { /*P5.js Canvas*/
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.loadingborder {
+	border: 3px solid var(--primary);
+	border-radius: 4px;
+  text-align: center;
+}
+
 .game {
   font-family: 'Lato', sans-serif;
   margin: -10px -10px -10px -10px !important;
   padding: -10px -10px -10px -10px !important;	
   background-color: var(--background);
   color: var(--text);
-	background-image: url("./pictures/background.png");
+	background-image: none;
   background-repeat: repeat;
   background-attachment: fixed;
   background-position: top;
-	overflow: hidden;
 }
 /* Underlines and makes links the same color as normal text */
 a {
@@ -51,7 +68,6 @@ a {
 }
 /* Makes images undraggable and unselectable */
 img {
-  user-drag: none; 
   user-select: none;
   -moz-user-select: none;
   -webkit-user-drag: none;
@@ -74,7 +90,7 @@ button {
   color: var(--text);
   border-radius: 4px;
   text-decoration: none;
-  margin: 4px 2px;
+  margin: 4px 2px 4px 2px;
 	font-family: 'Rampart One', cursive;
 	font-size: 2rem;
 	outline: none;
@@ -122,6 +138,7 @@ input[type=button], input[type=submit], input[type=reset] {
   text-decoration: none;
 	font-family: 'Rampart One', cursive;
 	font-size: 3rem;
+	margin: 4px 2px 4px 2px;
 }
 input:focus, textarea:focus, select:focus{
 	outline: none;
@@ -152,7 +169,7 @@ input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
   flex-direction: column;
 }
 /* Centers content with margins */
-.margin-centered{
+.margin-centered {
   margin-left: auto; margin-right: auto;
 }
 /* Makes clear hr element */
@@ -389,6 +406,12 @@ input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
   text-align: center;
 	margin: 0 0 0 0;
   }
+	.title {
+		font-size: 12vw;
+	}
+	.subtitle {
+		font-size: 6vw;
+	}
 }
 
 /* ■ ■ Title Bar ■ ■ */
@@ -597,4 +620,67 @@ input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
   background-repeat: repeat;
   background-attachment: fixed;
   background-position: top;
+}
+#mobilemovementslider {
+  position: fixed;
+	-webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 80%;
+  height: 50px;
+  background: var(--secondary);
+  outline: none;
+  opacity: 0.7;
+	border: 3px solid var(--primary);
+	border-radius: 4px;
+  z-index: 1;
+  bottom: 1vh;
+  left: 10%;
+}
+#mobilemovementslider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 50px; /* Set a specific slider handle width */
+  height: 50px; /* Slider handle height */
+  background: var(--primary); /* Blue background */
+  cursor: pointer; /* Cursor on hover */
+	border-radius: 50%;
+}
+#mobilemovementslider::-moz-range-thumb {
+  width: 50px; /* Set a specific slider handle width */
+  height: 50px; /* Slider handle height */
+  background: var(--primary); /* BLue background */
+  cursor: pointer; /* Cursor on hover */
+	border-radius: 50%;
+}
+
+/* The slider itself */
+.slider {
+	-webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 300px;
+  height: 20px;
+  background: var(--secondary);
+  outline: none;
+  opacity: 0.7;
+	border: 3px solid var(--primary);
+	border-radius: 4px;
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 22px; /* Set a specific slider handle width */
+  height: 22px; /* Slider handle height */
+  background: var(--primary); /* Blue background */
+  cursor: pointer; /* Cursor on hover */
+	border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+  width: 22px; /* Set a specific slider handle width */
+  height: 22px; /* Slider handle height */
+  background: var(--primary); /* BLue background */
+  cursor: pointer; /* Cursor on hover */
+	border-radius: 50%;
 }
