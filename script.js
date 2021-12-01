@@ -13,20 +13,20 @@ function draw() {
       })
       clearInterval(speed_and_score);
       mobile_move_value.value = 0;
+      document.getElementsByClassName("showwhengameover").forEach((item, index) => {
+        item.style.setProperty("display", "block");
+      });
+      document.getElementsByClassName("hidewhengameover").forEach((item, index) => {
+        item.style.setProperty("display", "none");
+      });
+      document.getElementById("gameedgesfancy").style.setProperty("overflow-y", "auto", "important");
+      document.getElementsByClassName("show-score").forEach((item, index) => {
+        item.innerText = "Score: " + score;
+      });
+      document.getElementsByClassName("show-highscore").forEach((item, index) => {
+        item.innerText = "Personal Best: " + localStorage.getItem("highscore");
+      });
     }
-    document.getElementsByClassName("showwhengameover").forEach((item, index) => {
-      item.style.setProperty("display", "block");
-    });
-    document.getElementsByClassName("hidewhengameover").forEach((item, index) => {
-      item.style.setProperty("display", "none");
-    });
-    document.getElementById("gameedgesfancy").style.setProperty("overflow-y", "auto", "important");
-    document.getElementsByClassName("show-score").forEach((item, index) => {
-      item.innerText = "Score: " + score;
-    });
-    document.getElementsByClassName("show-highscore").forEach((item, index) => {
-      item.innerText = "Personal Best: " + localStorage.getItem("highscore");
-    });
     firstFrame = false;
   } else {
     clamped_millis += deltaTime
@@ -108,6 +108,9 @@ function draw() {
       if(obstacles_sprites[i].position.y < -(obstacles_sprites[i].height + 5)) {
         obstacles_sprites[i].position.y = windowHeight + Random.range(obstacles_sprites[i].height + 1, windowHeight - 1);
         obstacles_sprites[i].position.x = Random.range(0, windowWidth);
+        if(localStorage.getItem("nosedive") == "true") {
+          obstacles_sprites[i].rotation = Random.range(0, 360);
+        }
       }
     }
 

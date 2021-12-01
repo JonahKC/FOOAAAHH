@@ -22,8 +22,6 @@
     <meta property="twitter:description" content="You're flying your airplane carrying a huge load of honey, when suddenly your plane explodes! As you fall, avoid birds and airplane parts while trying to hit flying globs of honey to slow down."> <!-- Page Description -->
     <meta property="twitter:image" content="https://fooaaahh.jcwyt.com/pictures/embed.png"> <!-- Social Media Embed (ideally 16x9 ratio, and must be link) -->
 	  <script>!Boolean(localStorage.getItem("username")) && window.location.replace("/");</script>
-    <link rel="stylesheet" type="text/css" href="../lib/loadingbar/loading-bar.min.css"/>
-    <script type="text/javascript" src="../lib/loadingbar/loading-bar.min.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics --
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D7P0F5F01"></script>
 		<script>
@@ -35,7 +33,7 @@
 		</script>-->
 	</head>
 	<body id="gameedgesfancy">
-    	<div class="loading_gif vertcenter-up margin-centered">
+    <div class="loading_gif vertcenter-up margin-centered">
 			<hr class="space" style="height:100px;">
     	<img class="vertcenter-up margin-centered loadingborder" src="../pictures/airplane.gif" alt="Loading Game..." width="20%">
 			<h2 class="subtitle center">Loading...</h2>
@@ -50,45 +48,40 @@
 			<div class="center"><img src="/pictures/man.png" height="200px"></div>
 			<div class="row">
 				<div class="column-x center">
-					<div class="highlight" style="height: auto; min-height: 380px;">
-					<h2 class="center coolfont"><span class="show-score">Score: {score}</span><br><span class="show-highscore">Personal Best: {highscore}</span></h2>
-					<button onclick="resetScene();" style="width: 200px">Play Again</button>
-					<br>
-					<button onclick="location.replace('../game/settings')" style="width: 200px">Settings</button>
-					<br>
-					<button onclick="location.replace('/')" style="width: 200px">Exit</button>
-					</div>
+						<div class="highlight" style="height: auto; min-height: 380px;">
+						<h2 class="center coolfont"><span class="show-score">Score: {score}</span><br><span class="show-highscore">Personal Best: {highscore}</span></h2>
+						<button onclick="resetScene();" style="width: 200px">Play Again</button>
+						<br>
+						<button onclick="location.replace('../game/settings')" style="width: 200px">Settings</button>
+						<br>
+						<button onclick="location.replace('/')" style="width: 200px">Exit</button>
 				</div>
-				<div class="column-y">
-					</div>
-				<div class="column-x">
-					<div class="highlight" style="height: auto; min-height: 380px;">
-						<h2 class="subtitle">Leaderboard</h2>
-						<p id="leaderboard" onload="updateLeaderboard()"></p>
-					</div>
+			</div>
+			<div class="column-y"></div>
+			<div class="column-x">
+				<div class="highlight" style="height: auto; min-height: 380px;">
+					<h2 class="subtitle">Leaderboard</h2>
+					<p id="leaderboard" onload="updateLeaderboard()"></p>
 				</div>
 			</div>
 		</div>
-		<script>
-		</script>
 		<script src="../lib/variables.js"></script>
 		<script src="../lib/p5.min.js"></script>
 		<script src="../lib/p5.play.js"></script>
-    <script src="../lib/p5.clickable.js"></script>
+		<script src="../lib/p5.clickable.js"></script>
 		<script src="../lib/p5.sound.js"></script>
-    <script src="../lib/ajax.min.js"></script>
-    <script src="../lib/censor.js"></script>
-    <script src="../lib/lootlocker.js"></script>
+		<script src="../lib/ajax.min.js"></script>
+		<script src="../lib/censor.js"></script>
+		<script src="../lib/lootlocker.js"></script>
 		<script src="../lib/functions.js"></script>
 		<script src="../lib/startup.js"></script>
 		<script src="../script.js"></script>
-	</body>
-	<footer class="showwhengameover">
-		<hr class="largeline">
-  	<a href="../index"><img src="../pictures/airplane.png" width="50px"></a>
-  	<p class="footertext">
-  		Made by <a target="_blank" href="https://jcwyt.com">JCWYT</a>.<br>
-      View the <a href="https://fooaaahh.jcwyt.com/credits">Full Credits</a>.
-  	</p>
-  </footer>
+		<footer class="showwhengameover">
+			<hr class="largeline">
+				<a href="../index"><img src="../pictures/airplane.png" width="50px"></a>
+				<p class="footertext">
+					Made by <a target="_blank" href="https://jcwyt.com">JCWYT</a>.<br>
+					View the <a href="https://fooaaahh.jcwyt.com/credits">Full Credits</a>.
+				</p>
+		</footer>
 </html>
