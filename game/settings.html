@@ -4,7 +4,6 @@
     <title>Game Settings - FOOAAAHH!</title> <!-- Page Title -->
     <link rel="icon" href="/pictures/airplane.png"> <!-- Favicon -->
     <meta name="description" content="You're flying your airplane carrying a huge load of honey, when suddenly your plane explodes! As you fall, avoid birds and airplane parts while trying to hit flying globs of honey to slow down."> <!-- Page Description -->
-    <meta name="keywords" content="fooaaahh, game, unblock, unblocked, stratagy, airplane, video game, honey, cloud, explode, subway surfers"> <!-- Keywords -->
     <meta name="robots" content="index, follow"> <!-- Index Preferences -->
     <link rel="canonical" href="https://fooaaahh.jcwyt.com/game/settings"> <!-- Canonical Domain -->
     <meta charset="UTF-8"> <!-- Unicode Type -->
@@ -22,18 +21,41 @@
     <meta property="twitter:title" content="Game Settings - FOOAAAHH!"> <!-- Page Title -->
     <meta property="twitter:description" content="You're flying your airplane carrying a huge load of honey, when suddenly your plane explodes! As you fall, avoid birds and airplane parts while trying to hit flying globs of honey to slow down."> <!-- Page Description -->
     <meta property="twitter:image" content="https://fooaaahh.jcwyt.com/pictures/embed.png"> <!-- Social Media Embed (ideally 16x9 ratio, and must be link) -->
+		<!-- Global site tag (gtag.js) - Google Analytics --
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D7P0F5F01"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'G-4D7P0F5F01');
+		</script>-->
   </head>
   <body>
 		<h2><a href="/game" class="nodeco">← back to game</a></h2>
   	<div class="highlight">
 			<h1 class="subtitle">Game Settings:</h1>
 			<form>
- 					<h3>Music Volume: {music volume}</h3>
-  				<input type="range" min="0" max="100" value="100" class="slider" id="">
-					 <h3>Sound Effect Volume: {sound effect volume}</h2>
-  				<input type="range" min="0" max="100" value="100" class="slider" id="">
-				</form>
-				<!-- settingsslider -->
+ 				<h3>Music Volume: <span class="updatemusicvalue">40</span></h3>
+  			<input id="musicvolumeslider" type="range" min="0" max="100" value="40" class="slider">
+				<h3>Sound Effect Volume: <span class="updatesfxvalue">100</span></h2>
+  			<input id="sfxvolumeslider" type="range" min="0" max="100" value="60" class="slider">
+				<h3>Controls: <span class="">Automatic</span></h2>
+
+  			<div class="center radio">
+
+					<input type="radio" id="Automatic" name="Controls" value="Automatic" checked>
+					<label for="Automatic"> Automatic</label>
+
+					<input type="radio" id="Web" name="Controls" value="Web">
+					<label for="Web"> Web</label>
+
+					<input type="radio" id="Mobile" name="Controls" value="Mobile">
+					<label for="Mobile"> Mobile</label>
+				</div>
+			</form>
+			<script src="../lib/settings.js"></script>
+			<!-- settingsslider -->
 		</div>
   	<hr class="space">
   </body>

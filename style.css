@@ -52,11 +52,11 @@ html {
 
 .game {
   font-family: 'Lato', sans-serif;
-  margin: -10px -10px -10px -10px !important;
-  padding: -10px -10px -10px -10px !important;	
+  margin-left: 25px;
+  margin-right: 25px;
   background-color: var(--background);
   color: var(--text);
-	background-image: none;
+	background-image: url("./pictures/background.png");
   background-repeat: repeat;
   background-attachment: fixed;
   background-position: top;
@@ -76,10 +76,10 @@ img {
 }
 /* Adds wider margins, centers and shrinks text */
 footer {
-  margin-left: 25px;
-  margin-right: 25px;
-  margin-bottom: 10px;
-  margin-top: 30px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 10px;
+  padding-top: 30px;
   text-align: center;
   font-size: .75rem;
 }
@@ -683,4 +683,40 @@ input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
   background: var(--primary); /* BLue background */
   cursor: pointer; /* Cursor on hover */
 	border-radius: 50%;
+}
+.radio {
+  width: 300px;
+  height: 20px;
+  background: rgba(150, 225, 255, 0.7);
+  outline: none;
+	border: 3px solid rgba(75, 119, 250, 0.7);
+	border-radius: 4px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 3px;
+  padding-bottom: 13px;
+	font-size: 1.2rem;
+}
+
+input[type=radio] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+
+  border: 2px solid rgba(75, 119, 250, 0.7);
+  transition: 0.1s all linear;
+  margin-right: 5px;
+
+  position: relative;
+  top: 4px;
+}
+
+input[type=radio]:checked {
+  border: 6px solid rgba(75, 119, 250, 0.7);
 }

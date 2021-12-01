@@ -4,7 +4,6 @@
     <title>Play - FOOAAAHH!</title> <!-- Page Title -->
     <link rel="icon" href="../pictures/airplane.png"> <!-- Favicon -->
     <meta name="description" content="You're flying your airplane carrying a huge load of honey, when suddenly your plane explodes! As you fall, avoid birds and airplane parts while trying to hit flying globs of honey to slow down."> <!-- Page Description -->
-    <meta name="keywords" content="fooaaahh, game, unblock, unblocked, stratagy, airplane, video game, honey, cloud, explode, subway surfers"> <!-- Keywords -->
     <meta name="robots" content="index, follow"> <!-- Index Preferences -->
     <link rel="canonical" href="https://fooaaahh.jcwyt.com/game"> <!-- Canonical Domain -->
     <meta charset="UTF-8"> <!-- Unicode Type -->
@@ -16,23 +15,31 @@
     <meta property="og:title" content="Play - FOOAAAHH!"> <!-- Page Title -->
     <meta property="og:description" content="You're flying your airplane carrying a huge load of honey, when suddenly your plane explodes! As you fall, avoid birds and airplane parts while trying to hit flying globs of honey to slow down."> <!-- Page Description -->
     <meta property="og:image" content="https://fooaaahh.jcwyt.com/pictures/embed.png"> <!-- Social Media Embed (ideally 16x9 ratio, and must be link) -->
-		<!-- Special Twitter Embeds -->
+	<!-- Special Twitter Embeds -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://fooaaahh.jcwyt.com/game"> <!-- Canonical Domain -->
     <meta property="twitter:title" content="Play - FOOAAAHH!"> <!-- Page Title -->
     <meta property="twitter:description" content="You're flying your airplane carrying a huge load of honey, when suddenly your plane explodes! As you fall, avoid birds and airplane parts while trying to hit flying globs of honey to slow down."> <!-- Page Description -->
     <meta property="twitter:image" content="https://fooaaahh.jcwyt.com/pictures/embed.png"> <!-- Social Media Embed (ideally 16x9 ratio, and must be link) -->
-		<script type="text/javascript">
-		  if(localStorage.getItem("username") == null) {
-		    window.location.replace("/");
-		  }
-    </script>
+	  <script>!Boolean(localStorage.getItem("username")) && window.location.replace("/");</script>
+    <link rel="stylesheet" type="text/css" href="../lib/loadingbar/loading-bar.min.css"/>
+    <script type="text/javascript" src="../lib/loadingbar/loading-bar.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics --
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D7P0F5F01"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'G-4D7P0F5F01');
+		</script>-->
 	</head>
 	<body id="gameedgesfancy">
-		<div class="loading_gif vertcenter-up margin-centered">
+    	<div class="loading_gif vertcenter-up margin-centered">
 			<hr class="space" style="height:100px;">
     	<img class="vertcenter-up margin-centered loadingborder" src="../pictures/airplane.gif" alt="Loading Game..." width="20%">
 			<h2 class="subtitle center">Loading...</h2>
+			<div id="gameloadingbar" class="ldBar" data-value="0" data-preset="rainbow" data-fill="../pictures/cloud.png"></div>
 		</div>
 		<div>
 			<input style="display: none;" type="range" min="-100" max="100" value="0" class="hidewhengameover mobileonly" id="mobilemovementslider">
@@ -62,6 +69,8 @@
 				</div>
 			</div>
 		</div>
+		<script>
+		</script>
 		<script src="../lib/variables.js"></script>
 		<script src="../lib/p5.min.js"></script>
 		<script src="../lib/p5.play.js"></script>
@@ -79,7 +88,7 @@
   	<a href="../index"><img src="../pictures/airplane.png" width="50px"></a>
   	<p class="footertext">
   		Made by <a target="_blank" href="https://jcwyt.com">JCWYT</a>.<br>
-      View the <a href="https://fooaaahh.jcwyt.com/credits">full credits</a>.
+      View the <a href="https://fooaaahh.jcwyt.com/credits">Full Credits</a>.
   	</p>
   </footer>
 </html>
