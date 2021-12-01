@@ -1,13 +1,14 @@
 function draw() {
   if(game_over) {
-    updateSprites(false);
-    clear(); // Invisible canvas
-    cvs.style("display", "none");
-    score = Math.floor(score); // Round the score to an integer
-    if(localStorage.getItem("highscore") == null || score > localStorage.getItem("highscore")) {
-      localStorage.setItem("highscore", score);
-    }
     if(firstFrame) {
+      cease_game_loop = false;
+      updateSprites(false);
+      clear(); // Invisible canvas
+      cvs.style("display", "none");
+      score = Math.floor(score); // Round the score to an integer
+      if(localStorage.getItem("highscore") == null || score > localStorage.getItem("highscore")) {
+        localStorage.setItem("highscore", score);
+      }
       submitScore(localStorage.getItem("username"), score).then(() => {
         updateLeaderboard();
       })
@@ -29,6 +30,17 @@ function draw() {
     }
     firstFrame = false;
   } else {
+    if(cease_game_loop) {
+      // Completely freeze every sprite in the scene, even stopping p5.play's built-in physics
+      for(let i = 0; i < allSprites.length; i++) {
+        allSprites[i].velocity.x = 0;
+        allSprites[i].velocity.y = 0;
+        allSprites[i].position.x = allSprites[i].position.x;
+        allSprites[i].position.y = allSprites[i].position.y;
+      }
+      return;
+    }
+
     clamped_millis += deltaTime
     // Update the background
     background(GAME_BACKGROUND_COLOR);
@@ -178,15 +190,27 @@ function draw() {
 }
 
 function keyPressed() {
-  if (keyCode === 80) { // Press P to pause
+  if(keyCode === 80 && !game_over) { // Press P to pause
     cease_game_loop = !cease_game_loop; // Toggle pause
     if(cease_game_loop) { // Stop player from teleporting whilst paused
-      noLoop();
+      soundtracks[current_soundtrack].pause();
+      increment_score = false;
+      // Completely freeze every sprite in the scene, even stopping p5.play's built-in physics
+      for(let i = 0; i < allSprites.length; i++) {
+        allSprites[i].velocity.x = 0;
+        allSprites[i].velocity.y = 0;
+        allSprites[i].position.x = allSprites[i].position.x;
+        allSprites[i].position.y = allSprites[i].position.y;
+      }
     } else {
-      loop();
+      soundtracks[current_soundtrack].isPaused() && soundtracks[current_soundtrack].play();
+      increment_score = true;
     }
   }
   if(cease_game_loop) {
+    return;
+  }
+  if(mobile()) {
     return;
   }
   // Move main_character sprite based on keypress

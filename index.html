@@ -25,7 +25,7 @@
     <script src="/lib/censor.js"></script>
     <script src="/lib/lootlocker.js"></script>
 
-		<!-- Global site tag (gtag.js) - Google Analytics --
+		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D7P0F5F01"></script>
 		<script>
 		  window.dataLayer = window.dataLayer || [];
@@ -33,7 +33,7 @@
 		  gtag('js', new Date());
 
 		  gtag('config', 'G-4D7P0F5F01');
-		</script>-->
+		</script>
   </head>
   <body>
   	<hr class="space">
@@ -44,9 +44,11 @@
   	<hr class="space">
   	<form onsubmit="localStorage.setItem('username', document.getElementById('username').value)" class="center" action="/game">
 			<input type="submit" value="Play!" style="width: 25%; min-width: 200px; font-size: 3rem;">
-			<br><br>
+  	  <hr class="space1" style="height: 0px;">
+			<input type="button" value="Settings" onclick="window.location.href='/game/settings'" style="width: 25%; min-width: 200px; font-size: 2rem;">
+  	  <hr class="space1" style="height: 4px;">
 			<input type="text" id="username" placeholder="Name" maxlength="25" required="required" style="width: 25%; min-width: 200px;">
-  	</form>
+    </form>
     <script>
       if(localStorage.getItem('username')) {
         document.getElementById('username').value = localStorage.getItem('username');
@@ -58,7 +60,7 @@
   		<div class="column-x center">
   			<div class="highlight" style="height: auto; min-height: 380px;">
   				<h2 class="subtitle">Leaderboard</h2>
-  				<p id="leaderboard" onload="updateLeaderboard()"></p>
+  				<p><span id="leaderboard" onload="updateLeaderboard()"></span><br><br><a href="/leaderboard">Top 100 →</a></p>
   			</div>
   		</div>
   		<div class="column-y">
