@@ -190,7 +190,7 @@ function draw() {
 }
 
 function keyPressed() {
-  if(keyCode === 80 && !game_over) { // Press P to pause
+if(keyCode === 80 || keyCode === 27 && !game_over) { // Press P to pause
     cease_game_loop = !cease_game_loop; // Toggle pause
     if(cease_game_loop) { // Stop player from teleporting whilst paused
       soundtracks[current_soundtrack].pause();
