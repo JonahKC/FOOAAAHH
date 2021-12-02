@@ -727,3 +727,6 @@ input[type=radio] {
 input[type=radio]:checked {
   border: 6px solid rgba(75, 119, 250, 0.7);
 }
+.tinytext {
+	font-size: .25rem;
+}

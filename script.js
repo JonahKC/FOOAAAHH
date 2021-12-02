@@ -9,9 +9,9 @@ function draw() {
       if(localStorage.getItem("highscore") == null || score > localStorage.getItem("highscore")) {
         localStorage.setItem("highscore", score);
       }
-      submitScore(localStorage.getItem("username"), score).then(() => {
+      func_192z_a_(localStorage.getItem("username"), score).then(() => {
         updateLeaderboard();
-      })
+      });
       clearInterval(speed_and_score);
       mobile_move_value.value = 0;
       document.getElementsByClassName("showwhengameover").forEach((item, index) => {
@@ -30,6 +30,8 @@ function draw() {
     }
     firstFrame = false;
   } else {
+
+		if(deltaTime > 500){cease_game_loop=true;}
     if(cease_game_loop) {
       // Completely freeze every sprite in the scene, even stopping p5.play's built-in physics
       for(let i = 0; i < allSprites.length; i++) {
@@ -38,6 +40,19 @@ function draw() {
         allSprites[i].position.x = allSprites[i].position.x;
         allSprites[i].position.y = allSprites[i].position.y;
       }
+      // Render the sprites, the background, and the score
+      background(GAME_BACKGROUND_COLOR);
+      drawSprites();
+      mobile() ? textSize(40) : textSize(50);
+      text(SCORE_TEXT.replace("{score}", Math.floor(score).toString()), windowWidth/2, (windowHeight/30) + 50);
+      // Cover the screen with a slightly transparent white rectangle
+      fill(255, 100);
+      rect(0, 0, width, height);
+      // Make black text in the center of the screen to indicate that the game is paused
+      fill(0);
+      textAlign(CENTER);
+      textSize(35);
+      text(`Press P or ${mobile() ? 'tap' : 'click'} to unpause`, width/2, height/2);
       return;
     }
 
@@ -59,7 +74,7 @@ function draw() {
     // Update the obstacles
     for(let i = 0; i < obstacles_sprites.length; i++) {
       obstacles_sprites[i].position.y -= obstacle_speed * deltaTime;
-      obstacles_sprites[i].size = windowHeight;
+      obstacles_sprites[i].size = windowWidth;
 
       // If the obstacle is off the screen, reset it to the top
       if(obstacles_sprites[i].position.y < -windowHeight) {
@@ -89,6 +104,14 @@ function draw() {
 
     // Lower FPS should not result in lower speed, so we multiply be deltaTime to make sure the speed is constant
     normalizedSpeed = (PLAYER_SPEED*deltaTime)*(windowWidth*0.0003)+6; // Thank you Mr. Nelson, for dimensional analysis. Scales the player speed based on screen size, and adjusts it so it"s the same regardless of latency.
+		
+		// Move main_character sprite based on keypress
+		movement = (right || d) - (left || a);
+		//if(true){main_character.increment_score();}
+		if(movement != 0){
+		main_character.setSpeed(normalizedSpeed * movement, 0);
+		main_character.mirrorX(movement);
+		}
 
     if(mobile() && (mobile_move_value.value >= 5 || mobile_move_value.value <= -5)) {
       main_character.mirrorX(Math.sign(mobile_move_value.value))
@@ -159,7 +182,7 @@ function draw() {
         main_character.velocity.x *= .6;
       }
     } else {
-      if(!keyIsDown(LEFT_ARROW) && !keyIsDown(RIGHT_ARROW) && !keyIsDown(65) && !keyIsDown(68)) {
+      if(movement == 0) {
         main_character.velocity.x *= .8;
       }
     }
@@ -168,7 +191,8 @@ function draw() {
     drawSprites();
 
     // Render score
-    text(SCORE_TEXT.replace("{score}", Math.floor(score).toString()), windowWidth/2, (windowWidth/30) + 20);
+    mobile() ? textSize(40) : textSize(50);
+    text(SCORE_TEXT.replace("{score}", Math.floor(score).toString()), windowWidth/2, (windowHeight/30) + 50);
 
     if(obstacle_speed > .8) { // Score is ~45 when obstacle speed is .8, if you"re accelerating the whole time
       blackout = min(blackout + .05 * deltaTime, 255); // Fade out the screen, clamped to 255 for alpha (100% opaque)
@@ -189,8 +213,14 @@ function draw() {
   }
 }
 
+// When the mouse is pressed, if cease_game_loop is true, set it to false
+function mousePressed() {
+  cease_game_loop && (cease_game_loop = false);
+}
+
+// Override the default arrow key behaviour and set
 function keyPressed() {
-if(keyCode === 80 || keyCode === 27 && !game_over) { // Press P to pause
+  if(keyCode === 80 || keyCode === 27 && !game_over) { // Press P to pause
     cease_game_loop = !cease_game_loop; // Toggle pause
     if(cease_game_loop) { // Stop player from teleporting whilst paused
       soundtracks[current_soundtrack].pause();
@@ -207,20 +237,37 @@ if(keyCode === 80 || keyCode === 27 && !game_over) { // Press P to pause
       increment_score = true;
     }
   }
-  if(cease_game_loop) {
-    return;
-  }
   if(mobile()) {
     return;
   }
-  // Move main_character sprite based on keypress
-  if(keyCode === RIGHT_ARROW || keyCode === 68 ) {
-    main_character.setSpeed(normalizedSpeed, 0);
-    // Flip character to face right
-    main_character.mirrorX(1);
-  } else if(keyCode === LEFT_ARROW || keyCode === 65) {
-    main_character.setSpeed(normalizedSpeed, 180);
-    // Flip character to face left
-    main_character.mirrorX(-1);
+  switch(keyCode) {
+    case 37:
+			left = true;
+      break;
+    case 39:
+			right = true;
+      break;
+		case 65:
+		  a = true;
+			break;
+		case 68:
+			d = true;
+			break;
+  }
+}
+function keyReleased() {
+  switch(keyCode) {
+    case 37:
+			left = false;
+      break;
+    case 39:
+			right = false;
+      break;
+		case 65:
+		  a = false;
+			break;
+		case 68:
+			d = false;
+			break;
   }
 }
