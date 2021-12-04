@@ -3,4 +3,4 @@ You're flying your airplane carrying a huge load of honey, when suddenly your pl
 #### URL: [https://fooaaahh.jcwyt.com](fooaaahh.jcwyt.com)
 #### Replit: [https://replit.com/@jcwyt/FOOAAAHH](replit.com/@jcwyt/FOOAAAHH)
 
-# [https://github.com/JonahKC/FOOAAAHH/blob/main/LICENSE.md](License)
+# [License](https://github.com/JonahKC/FOOAAAHH/blob/main/LICENSE.md)
