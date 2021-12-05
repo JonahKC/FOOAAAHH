@@ -198,7 +198,11 @@ function draw() {
     if(localStorage.getItem("developermode") == "on") {
       textSize(20);
       textAlign(LEFT, TOP);
-      text(`FPS: ${Math.round(frameRate())}\nSpeed: ${Math.round(obstacle_speed*1000)}\nHoney Collected: ${total_honey_collected}\nObstacles in Scene: ${obstacles_sprites.length}`, 5, 5);
+      text(`FPS: ${Math.round(frameRate())}
+            Speed: ${Math.round(obstacle_speed*1000)}
+            Honey Collected: ${total_honey_collected}
+            Obstacles in Scene: ${obstacles_sprites.length}
+            Player Horiontal Speed: ${main_character.velocity.x.toFixed(3)}`.dedent(), 5, 5);
     }
 
     if(obstacle_speed > .8) { // ax_vbf_4 is ~45 when obstacle speed is .8, if you"re accelerating the whole time
