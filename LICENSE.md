@@ -1,15 +1,11 @@
+**To read the full FOOAAAHH! TOS, go to [fooaaahh.jcwyt.com/terms](https://fooaaahh.jcwyt.com/terms). To read JCWYT's terms, go to [jcwyt.com/terms](https://jcwyt.com/terms).**
+
 ## Gaming in Class
 The JCWYT team does not endorse nor condone any playing of video games in class.
 
 ## Privacy and Cookies
 ### PRIVACY SUMMARY
 None of our products record or sell your personal identifying information. All personal information is stored on-device for personalization purposes only. The only things sent to our backends are anonymous data like analytics and user-inputted usernames and configuration.
-
-### GOOGLE ACCOUNTS
-On our apps with Google Oauth, we only take your email, name, and profile picture. None of that data is sent to or store in our backend. It might be stored locally.
-
-### DISCORD BOTS
-Our Discord bots only store server names and their config files. No other user information or activity is stored.
 
 ### LEADERBOARDS
 Our leaderboards are stored through LootLocker. Anything you enter as your name can and most likely will be displayed on the public leaderboard. We do our best to censor offensive language. That being said, it is all user-added data and we don't take responsibity for any harm leaderboard names may cause. If you see a name and want to report it, let us know at bugs@jcwyt.com.
