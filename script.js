@@ -172,6 +172,7 @@ function draw() {
         // Slow the game down
         obstacle_speed *= HONEY_SLOW_AMOUNT;
         ax_vbf_4 += 5;
+        total_honey_collected++;
         addObstacle();
       }
     }
@@ -197,7 +198,7 @@ function draw() {
     if(localStorage.getItem("developermode") == "on") {
       textSize(20);
       textAlign(LEFT, TOP);
-      text(`FPS: ${Math.round(frameRate())}\nSpeed: ${Math.round(obstacle_speed*1000)}`, 5, 5);
+      text(`FPS: ${Math.round(frameRate())}\nSpeed: ${Math.round(obstacle_speed*1000)}\nHoney Collected: ${total_honey_collected}\nObstacles in Scene: ${obstacles_sprites.length}`, 5, 5);
     }
 
     if(obstacle_speed > .8) { // ax_vbf_4 is ~45 when obstacle speed is .8, if you"re accelerating the whole time
