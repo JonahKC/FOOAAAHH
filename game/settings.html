@@ -37,23 +37,40 @@
 			<h1 class="subtitle">Game Settings:</h1>
 			<form>
  				<h3>Music Volume: <span class="updatemusicvalue">40</span></h3>
+
   			<input id="musicvolumeslider" type="range" min="0" max="100" value="40" class="slider">
+
 				<h3>Sound Effect Volume: <span class="updatesfxvalue">100</span></h2>
+
   			<input id="sfxvolumeslider" type="range" min="0" max="100" value="60" class="slider">
-				<h3>Controls: <span class="">Automatic</span></h2>
+				<h3>Controls:</h2>
 
   			<div class="center radio">
 
-					<input type="radio" id="Automatic" name="Controls" value="Automatic" checked>
+					<input type="radio" id="Automatic" name="Controls" checked>
 					<label for="Automatic"> Automatic</label>
 
-					<input type="radio" id="Web" name="Controls" value="Web">
+					<input type="radio" id="Web" name="Controls">
 					<label for="Web"> Web</label>
 
-					<input type="radio" id="Mobile" name="Controls" value="Mobile">
+					<input type="radio" id="Mobile" name="Controls">
 					<label for="Mobile"> Mobile</label>
 				</div>
+				<h3>Developer Mode:</h2>
+
+				<div class="center radio">
+					<input type="radio" id="disabledevmode" name="devmode" checked>
+					<label for="disabledevmode"> Off</label>
+
+					<input type="radio" id="enabledevmode" name="devmode">
+					<label for="enabledevmode"> Enabled</label>
+				</div>
+				<br>
+				<hr class="smallline">
+				<h4>v1.0.5</h4>
+				<h4>Found a bug? Report it on <a target="_blank" href="https://jcwyt.com/discord">our discord</a> or by emailing <a href="mailto:bugs@jcwyt.com">bugs@jcwyt.com</a>.</h4>
 			</form>
+
 			<script src="../lib/settings.js"></script>
 			<!-- settingsslider -->
 		</div>

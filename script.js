@@ -5,11 +5,11 @@ function draw() {
       updateSprites(false);
       clear(); // Invisible canvas
       cvs.style("display", "none");
-      score = Math.floor(score); // Round the score to an integer
-      if(localStorage.getItem("highscore") == null || score > localStorage.getItem("highscore")) {
-        localStorage.setItem("highscore", score);
+      ax_vbf_4 = Math.floor(ax_vbf_4); // Round the score to an integer
+      if(localStorage.getItem("highscore") == null || ax_vbf_4 > localStorage.getItem("highscore")) {
+        localStorage.setItem("highscore", ax_vbf_4);
       }
-      func_192z_a_(localStorage.getItem("username"), score).then(() => {
+      func_192z_a_(localStorage.getItem("username"), ax_vbf_4).then(() => {
         updateLeaderboard();
       });
       clearInterval(speed_and_score);
@@ -22,7 +22,7 @@ function draw() {
       });
       document.getElementById("gameedgesfancy").style.setProperty("overflow-y", "auto", "important");
       document.getElementsByClassName("show-score").forEach((item, index) => {
-        item.innerText = "Score: " + score;
+        item.innerText = "Score: " + ax_vbf_4;
       });
       document.getElementsByClassName("show-highscore").forEach((item, index) => {
         item.innerText = "Personal Best: " + localStorage.getItem("highscore");
@@ -40,11 +40,11 @@ function draw() {
         allSprites[i].position.x = allSprites[i].position.x;
         allSprites[i].position.y = allSprites[i].position.y;
       }
-      // Render the sprites, the background, and the score
+      // Render the sprites, the background, and the ax_vbf_4
       background(GAME_BACKGROUND_COLOR);
       drawSprites();
       mobile() ? textSize(40) : textSize(50);
-      text(SCORE_TEXT.replace("{score}", Math.floor(score).toString()), windowWidth/2, (windowHeight/30) + 50);
+      text(SCORE_TEXT.replace("{score}", Math.floor(ax_vbf_4).toString()), windowWidth/2, (windowHeight/30) + 50);
       // Cover the screen with a slightly transparent white rectangle
       fill(255, 100);
       rect(0, 0, width, height);
@@ -107,7 +107,7 @@ function draw() {
 		
 		// Move main_character sprite based on keypress
 		movement = (right || d) - (left || a);
-		//if(true){main_character.increment_score();}
+		//if(true){main_character.increment_ax_vbf_4();}
 		if(movement != 0){
 		main_character.setSpeed(normalizedSpeed * movement, 0);
 		main_character.mirrorX(movement);
@@ -171,7 +171,7 @@ function draw() {
         honey_sprites[i].position.x = Random.range(0, windowWidth);
         // Slow the game down
         obstacle_speed *= HONEY_SLOW_AMOUNT;
-        score += 5;
+        ax_vbf_4 += 5;
         addObstacle();
       }
     }
@@ -192,9 +192,15 @@ function draw() {
 
     // Render score
     mobile() ? textSize(40) : textSize(50);
-    text(SCORE_TEXT.replace("{score}", Math.floor(score).toString()), windowWidth/2, (windowHeight/30) + 50);
+    text(SCORE_TEXT.replace("{score}", Math.floor(ax_vbf_4).toString()), windowWidth/2, (windowHeight/30) + 50);
 
-    if(obstacle_speed > .8) { // Score is ~45 when obstacle speed is .8, if you"re accelerating the whole time
+    if(localStorage.getItem("developermode") == "on") {
+      textSize(20);
+      textAlign(LEFT, TOP);
+      text(`FPS: ${Math.round(frameRate())}\nSpeed: ${Math.round(obstacle_speed*1000)}`, 5, 5);
+    }
+
+    if(obstacle_speed > .8) { // ax_vbf_4 is ~45 when obstacle speed is .8, if you"re accelerating the whole time
       blackout = min(blackout + .05 * deltaTime, 255); // Fade out the screen, clamped to 255 for alpha (100% opaque)
     }
 
@@ -224,7 +230,7 @@ function keyPressed() {
     cease_game_loop = !cease_game_loop; // Toggle pause
     if(cease_game_loop) { // Stop player from teleporting whilst paused
       soundtracks[current_soundtrack].pause();
-      increment_score = false;
+      increment_ax_vbf_4 = false;
       // Completely freeze every sprite in the scene, even stopping p5.play's built-in physics
       for(let i = 0; i < allSprites.length; i++) {
         allSprites[i].velocity.x = 0;
@@ -234,7 +240,7 @@ function keyPressed() {
       }
     } else {
       soundtracks[current_soundtrack].isPaused() && soundtracks[current_soundtrack].play();
-      increment_score = true;
+      increment_ax_vbf_4 = true;
     }
   }
   if(mobile()) {
