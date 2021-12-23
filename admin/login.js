@@ -11,7 +11,7 @@ let CHECK_PASS_URL = API_URL+"/fooaaahh/admin/check";
         xhr.setRequestHeader("password", password)
         xhr.onload = function() {
             if (xhr.response.success) {
-                location.href = '/panel';
+                location.href = 'panel';
             } else {
                 console.log("Invalid cookie!")
                 document.cookie = "password=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/;"
@@ -43,7 +43,7 @@ function checkPassword(pass) {
             d.setTime(d.getTime() + (1*24*60*60*1000));
             let expires = "expires="+ d.toUTCString();
             document.cookie = "password=" + pass + ";expires="+ d.toUTCString()+";path=/;";
-            location.href = '/panel';
+            location.href = 'panel';
             document.getElementById("notification").innerText = "Success!";
             document.getElementById("notification").style.color = "lightgreen";
             notification("Success!");
