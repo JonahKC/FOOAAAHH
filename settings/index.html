@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>Game Settings - FOOAAAHH!</title> <!-- Page Title -->
+    <link rel="icon" href="/pictures/airplane.png"> <!-- Favicon -->
+    <meta name="description" content="You're flying your airplane carrying a huge load of honey, when suddenly your plane explodes! As you fall, avoid birds and airplane parts while trying to hit flying globs of honey to slow down."> <!-- Page Description -->
+    <meta name="robots" content="index, follow"> <!-- Index Preferences -->
+    <link rel="canonical" href="https://fooaaahh.jcwyt.com/game/settings"> <!-- Canonical Domain -->
+    <meta charset="UTF-8"> <!-- Unicode Type -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Screen Width -->
+    <link rel="stylesheet" type="text/css" href="/style.css" media="screen" />
+    <!-- Social Media Embeds -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fooaaahh.jcwyt.com/game/settings"> <!-- Canonical Domain -->
+    <meta property="og:title" content="Game Settings - FOOAAAHH!"> <!-- Page Title -->
+    <meta property="og:description" content="You're flying your airplane carrying a huge load of honey, when suddenly your plane explodes! As you fall, avoid birds and airplane parts while trying to hit flying globs of honey to slow down."> <!-- Page Description -->
+    <meta property="og:image" content="https://fooaaahh.jcwyt.com/pictures/embed.png"> <!-- Social Media Embed (ideally 16x9 ratio, and must be link) -->
+    <!-- Special Twitter Embeds -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://fooaaahh.jcwyt.com/"> <!-- Canonical Domain -->
+    <meta property="twitter:title" content="Game Settings - FOOAAAHH!"> <!-- Page Title -->
+    <meta property="twitter:description" content="You're flying your airplane carrying a huge load of honey, when suddenly your plane explodes! As you fall, avoid birds and airplane parts while trying to hit flying globs of honey to slow down."> <!-- Page Description -->
+    <meta property="twitter:image" content="https://fooaaahh.jcwyt.com/pictures/embed.png"> <!-- Social Media Embed (ideally 16x9 ratio, and must be link) -->
+		<meta name="theme-color" content="#4b77fa">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="/pwa/icon-512x512.png">
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D7P0F5F01"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'G-4D7P0F5F01');
+		</script>
+  </head>
+  <body>
+		<h2><a href="/game" class="nodeco">← back to game</a></h2>
+  	<div class="highlight">
+			<h1 class="subtitle">Game Settings:</h1>
+			<form>
+ 				<h3>Music Volume: <span class="updatemusicvalue">40</span></h3>
+
+  			<input id="musicvolumeslider" type="range" min="0" max="100" value="40" class="slider">
+
+				<h3>Sound Effect Volume: <span class="updatesfxvalue">100</span></h2>
+
+  			<input id="sfxvolumeslider" type="range" min="0" max="100" value="60" class="slider">
+				<h3>Controls:</h2>
+
+  			<div class="center radio">
+
+					<input type="radio" id="Automatic" name="Controls" checked>
+					<label for="Automatic"> Automatic</label>
+
+					<input type="radio" id="Web" name="Controls">
+					<label for="Web"> Web</label>
+
+					<input type="radio" id="Mobile" name="Controls">
+					<label for="Mobile"> Mobile</label>
+				</div>
+				<h3>Developer Mode:</h2>
+
+				<div class="center radio">
+					<input type="radio" id="disabledevmode" name="devmode" checked>
+					<label for="disabledevmode"> Off</label>
+
+					<input type="radio" id="enabledevmode" name="devmode">
+					<label for="enabledevmode"> On</label>
+				</div>
+				<br>
+				<hr class="smallline">
+				<h4>v1.0.13</h4>
+				<h4>Found a bug? Report it on <a target="_blank" href="https://jcwyt.com/discord">our discord</a> or by emailing <a href="mailto:bugs@jcwyt.com">bugs@jcwyt.com</a>.</h4>
+			</form>
+
+			<script src="../lib/settings.js"></script>
+			<!-- settingsslider -->
+		</div>
+  	<hr class="space">
+  </body>
+	<footer>
+		<hr class="largeline">
+  	<a href="/"><img src="/pictures/airplane.png" width="50px" alt="Airplane"></a>
+  	<p class="footertext">
+  		Made by <a target="_blank" href="https://jcwyt.com">JCWYT</a>.<br>
+      By playing, you agree to our <a href="https://fooaaahh.jcwyt.com/terms/">terms and conditions</a>.<br>
+      View the <a href="https://fooaaahh.jcwyt.com/credits/">full credits</a>.
+  	</p>
+  </footer>
+</html>

@@ -1,0 +1,36 @@
+{
+  "name": "FOOAAAHH!",
+  "short_name": "FOOAAAHH!",
+  "icons": [
+    {
+        "src": "/pwa/icon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any maskable"
+    },
+    {
+        "src": "/pwa/icon-256x256.png",
+        "sizes": "256x256",
+        "type": "image/png",
+        "purpose": "any maskable"
+    },
+    {
+        "src": "/pwa/icon-384x384.png",
+        "sizes": "384x384",
+        "type": "image/png",
+        "purpose": "any maskable"
+    },
+    {
+        "src": "/pwa/icon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "any maskable"
+    }
+
+  ],
+  "start_url": "/game/index.html",
+  "background_color": "#4bc8fa",
+  "display": "standalone",
+  "theme_color": "#4b77fa",
+  "description": "You're flying your airplane carrying a huge load of honey, when suddenly your plane explodes! As you fall, avoid birds and airplane parts while trying to hit flying globs of honey to slow down."
+}

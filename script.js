@@ -122,7 +122,7 @@ function draw() {
   }
 }
 function mousePressed() {
-  cease_game_loop && (cease_game_loop = !1)
+  cease_game_loop && (cease_game_loop = false)
 }
 function keyPressed() {
   if (80 === keyCode || 27 === keyCode && !game_over)
@@ -139,6 +139,10 @@ function keyPressed() {
       soundtracks[current_soundtrack].isPaused() && soundtracks[current_soundtrack].play(),
       increment_ax_vbf_4 = !0;
   mobile() || (37 === keyCode ? left = !0 : 39 === keyCode ? right = !0 : 65 === keyCode ? a = !0 : 68 === keyCode ? d = !0 : void 0)
+  // Otherwise, if the game is over, and the user presses enter, restart the game.
+  if (game_over && keyCode === 13) {
+    resetScene();
+  }
 }
 function keyReleased() {
   37 === keyCode ? left = !1 : 39 === keyCode ? right = !1 : 65 === keyCode ? a = !1 : 68 === keyCode ? d = !1 : void 0

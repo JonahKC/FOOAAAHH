@@ -2,7 +2,7 @@
 <html>
 	<head>
     <title>FOOAAAHH!</title> <!-- Page Title -->
-    <link rel="icon" href="/pictures/airplane.png"> <!-- Favicon -->
+    <link rel="icon" href="./pictures/airplane.png"> <!-- Favicon -->
     <meta name="description" content="You're flying your airplane carrying a huge load of honey, when suddenly your plane explodes! As you fall, avoid birds and airplane parts while trying to hit flying globs of honey to slow down."> <!-- Page Description -->
     <meta name="robots" content="index, follow"> <!-- Index Preferences -->
     <link rel="canonical" href="https://fooaaahh.jcwyt.com/"> <!-- Canonical Domain -->
@@ -21,9 +21,12 @@
     <meta property="twitter:title" content="FOOAAAHH!"> <!-- Page Title -->
     <meta property="twitter:description" content="You're flying your airplane carrying a huge load of honey, when suddenly your plane explodes! As you fall, avoid birds and airplane parts while trying to hit flying globs of honey to slow down."> <!-- Page Description -->
     <meta property="twitter:image" content="https://fooaaahh.jcwyt.com/pictures/embed.png"> <!-- Social Media Embed (ideally 16x9 ratio, and must be link) -->
-    <script src="/lib/ajax.min.js"></script>
-    <script src="/lib/censor.js"></script>
-    <script src="/obfuscated/lootlocker.js"></script>
+		<meta name="theme-color" content="#4b77fa">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="/pwa/icon-512x512.png">
+    <script src="./lib/ajax.min.js"></script>
+    <script src="./lib/censor.js"></script>
+    <script src="./lib/leaderboard.js"></script>
 
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D7P0F5F01"></script>
@@ -34,6 +37,28 @@
 
 		  gtag('config', 'G-4D7P0F5F01');
 		</script>
+
+    <!-- Progressive Web Application! -->
+		<link rel="manifest" href="./manifest.json">
+    <script>
+      window.addEventListener('load', () => {
+        registerSW();
+      });
+
+      async function registerSW() {
+
+        // Let's make sure PWAs are supported first
+        if('serviceWorker' in navigator) {
+          try {
+            
+            // Register the serviceWorker
+            await navigator.serviceWorker.register('./serviceworker.js');
+          } catch (e) {
+            console.log(`ServiceWorker registration failed...\n${e}`);
+          }
+        }
+      }
+    </script>
   </head>
   <body>
   	<hr class="space">
@@ -45,7 +70,7 @@
   	<form onsubmit="localStorage.setItem('username', document.getElementById('username').value)" class="center" action="/game">
 			<input type="submit" value="Play!" style="width: 25%; min-width: 200px; font-size: 3rem;">
   	  <hr class="space1" style="height: 0px;">
-			<input type="button" value="Settings" onclick="window.location.href='/game/settings'" style="width: 25%; min-width: 200px; font-size: 2rem;">
+			<input type="button" value="Settings" onclick="window.location.href='/settings'" style="width: 25%; min-width: 200px; font-size: 2rem;">
   	  <hr class="space1" style="height: 4px;">
 			<input type="text" id="username" placeholder="Name" maxlength="25" required="required" style="width: 25%; min-width: 200px;">
 			<p class="tinytext center">By clicking play, you agree to <a href="/terms">FOOAAAHH's terms</a>.</p>
@@ -61,7 +86,7 @@
   		<div class="column-x center">
   			<div class="highlight" style="height: auto; min-height: 380px;">
   				<h2 class="subtitle">Leaderboard</h2>
-  				<p><span id="leaderboard" onload="updateLeaderboard()"></span><br><br><a href="/leaderboard">Top 100 →</a></p>
+  				<p><span id="leaderboard" onload="updateLeaderboard()">Loading leaderboard...</span><br><br><a href="/leaderboard/">Top 100 →</a></p>
   			</div>
   		</div>
   		<div class="column-y">
@@ -77,11 +102,11 @@
   	<hr class="largeline">
   </body>
   <footer>
-  	<a href="/"><img src="/pictures/airplane.png" width="50px"></a>
+  	<a href="/"><img src="./pictures/airplane.png" width="50px" alt="Airplane"></a>
   	<p class="footertext">
   		Made by <a target="_blank" href="https://jcwyt.com">JCWYT</a>.<br>
-      By playing, you agree to our <a href="https://fooaaahh.jcwyt.com/terms">terms and conditions</a>.<br>
-      View the <a href="https://fooaaahh.jcwyt.com/credits">full credits</a>.
+      By playing, you agree to our <a href="https://fooaaahh.jcwyt.com/terms/">terms and conditions</a>.<br>
+      View the <a href="https://fooaaahh.jcwyt.com/credits/">full credits</a>.
   	</p>
   </footer>
 </html>

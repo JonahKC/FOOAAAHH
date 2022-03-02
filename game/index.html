@@ -24,6 +24,9 @@
     <meta property="twitter:image" content="https://fooaaahh.jcwyt.com/pictures/embed.png"> <!-- Social Media Embed (ideally 16x9 ratio, and must be link) -->
 	  <script>!Boolean(localStorage.getItem("username")) && window.location.replace("/");</script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
+		<meta name="theme-color" content="#4b77fa">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="/pwa/icon-512x512.png">
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D7P0F5F01"></script>
 		<script>
 		  window.dataLayer = window.dataLayer || [];
@@ -46,14 +49,14 @@
 		<div class="showwhengameover">
 			<hr class="space">
 			<h2 class="center subtitle">You died!</h2>
-			<div class="center"><img src="/pictures/man.png" height="200px"></div>
+			<div class="center"><img src="/pictures/man.png" height="200px" alt="FOOAAAHH! Man"></div>
 			<div class="row">
 				<div class="column-x center">
 						<div class="highlight" style="height: auto; min-height: 380px;">
 						<h2 class="center coolfont"><span class="show-score">Score: {score}</span><br><span class="show-highscore">Personal Best: {highscore}</span></h2>
 						<button onclick="resetScene();" style="width: 200px">Play Again</button>
 						<br>
-						<button onclick="location.replace('../game/settings')" style="width: 200px">Settings</button>
+						<button onclick="location.replace('/settings/')" style="width: 200px">Settings</button>
 						<br>
 						<button onclick="location.replace('/')" style="width: 200px">Exit</button>
 				</div>
@@ -62,7 +65,7 @@
 			<div class="column-x">
 				<div class="highlight" style="height: auto; min-height: 380px;">
   				<h2 class="subtitle">Leaderboard</h2>
-  				<p><span id="leaderboard" onload="updateLeaderboard()"></span><br><br><a href="/leaderboard">Top 100 →</a></p>
+  				<p><span id="leaderboard" onload="updateLeaderboard()">Loading leaderboard...</span><br><br><a href="/leaderboard">Top 100 →</a></p>
 				</div>
 			</div>
 		</div>
@@ -73,7 +76,7 @@
 		<script src="../lib/p5.sound.js"></script>
 		<script src="../lib/ajax.min.js"></script>
 		<script src="../lib/censor.js"></script>
-		<script src="../obfuscated/lootlocker.js"></script>
+		<script src="../lib/leaderboard.js"></script>
 		<script src="../lib/functions.js"></script>
 		<script src="../lib/startup.js"></script>
 		<script src="../script.js"></script>
@@ -81,7 +84,7 @@
 	</body>
 	<footer class="showwhengameover">
 		<hr class="largeline">
-		<a href="/"><img src="../pictures/airplane.png" width="50px"></a>
+		<a href="/"><img src="../pictures/airplane.png" width="50px" alt="Airplane"></a>
   	<p class="footertext">
   		Made by <a target="_blank" href="https://jcwyt.com">JCWYT</a>.<br>
       By playing, you agree to our <a href="https://fooaaahh.jcwyt.com/terms">terms and conditions</a>.<br>

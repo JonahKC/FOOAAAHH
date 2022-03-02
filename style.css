@@ -630,6 +630,7 @@ input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
 }
 #mobilemovementslider {
   position: fixed;
+  margin-bottom: 25px;
 	-webkit-appearance: none;  /* Override default CSS styles */
   appearance: none;
   width: 80%;
